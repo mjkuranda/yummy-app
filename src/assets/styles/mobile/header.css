@@ -1,5 +1,5 @@
 @media only screen and (max-width: 1024px) {
-    body {
+    #root {
         --mh: unset !important;
         --wh: unset !important;
         --hh: unset !important;

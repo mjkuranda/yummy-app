@@ -1,5 +1,9 @@
 import React from 'react';
 
+import '../assets/styles/header.css';
+import '../assets/styles/index-media.css';
+import '../assets/styles/index.css';
+
 export default function Main() {
     return (
         <>

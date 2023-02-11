@@ -43,7 +43,7 @@ header > div > div {
 #header-cloth {
     position: absolute;
     top: 0;
-    left: calc((100vw - 1100px) / 2);
+    /* left: calc((100vw - 1100px) / 2); */
     height: 100vh;
     /* background-color: var(--blue-de-france); */
     opacity: .5;
