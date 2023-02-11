@@ -1,0 +1,89 @@
+main {
+    background-color: var(--orange-yellow-crayola);
+    padding: 8px;
+}
+
+ul {
+    list-style: none;
+}
+
+input {
+    padding: 0.5em;
+    border-radius: 0.5em;
+    border: 1px solid;
+    width: 256px;
+}
+
+textarea {
+    padding: 0.5em;
+    border-radius: 0.5em;
+    resize: vertical;
+    overflow: auto;
+    max-height: 400px;
+    min-height: 128px;
+}
+
+select {
+    width: 256px;
+    padding: 0.5em;
+    border-radius: 0.5em;
+}
+
+form div[required] > h2::after {
+    content: "*";
+    color: red;
+    font-size: 1em;
+}
+
+form input + button,
+form textarea + button {
+    margin-left: 0.5em;
+}
+form input + button,
+form textarea + button,
+form :not(:placeholder-shown):valid + button {
+    opacity: 0;
+}
+form :not(:placeholder-shown):invalid + button {
+    opacity: 1;
+}
+
+main > div + div {
+    margin-top: 0.5em;
+}
+
+.meals-add-nav {
+    background-color: var(--honey-yellow);
+    padding: 1em;
+    border-radius: 0.5em;
+}
+
+.meals-add-nav > a > i {
+    margin-right: 0.5em;
+}
+
+.meals-add-container {
+    background-color: var(--honey-yellow);
+    padding: 1em;
+    border-radius: 0.5em;
+}
+
+.meals-add-container > form > div {
+    margin-top: 2em;
+}
+
+.meals-add-container > form div.flex-center {
+    margin-top: 0.5em;
+}
+
+.category > ul > li {
+    display: flex;
+    align-items: center;
+}
+.category > ul > li > label {
+    cursor: pointer;
+}
+
+.category > ul > li > input {
+    margin-right: 0.5em;
+}
