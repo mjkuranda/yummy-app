@@ -20,6 +20,12 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "quotes": [1, "single"]
+        "quotes": [1, "single"],
+        "@typescript-eslint/quotes": [ 1, "single", { "allowTemplateLiterals": true } ]
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     }
 }

@@ -1,10 +1,28 @@
 import React from 'react';
+import MealCategory, { MealCategoryProps } from '../components/MealCategory';
+import Button from '../components/ui/Button';
 
 import '../assets/styles/header.css';
 import '../assets/styles/index-media.css';
 import '../assets/styles/index.css';
 
 export default function Main() {
+    const categories: MealCategoryProps[] = [
+        {
+            description: 'Idealne jedzenie dla tych, którzy chcą się zdrowo odżywiać.',
+            ingredients: [ 'blueberry', 'cherry', 'grapes', 'raspberry', 'strawberry', 'citrus', 
+            'orange', 'whole-apple', 'broccoli', 'carrot', 'cauliflower', 'celery', 'kohlrabi',
+            'leek', 'pumpkin', 'tomato', 'white-beans', 'zucchini' ]
+        },
+        {
+            description: 'Coś mniej skromnego, bogatszego w tłuszcz.'
+        },
+        {
+            description: 'Maniacy owoców błyskawicznie rozpoczą serfing tej kategorii.',
+            ingredients: [ 'cherry', 'grapes', 'raspberry', 'strawberry' ]
+        }
+    ];
+    
     return (
         <>
             <header>
@@ -16,9 +34,9 @@ export default function Main() {
                         <div id="header-container">
                             <h1 className="flex-center">Yummy!</h1>
                             <div className="flex-center">
-                                <button onClick={() => move('/search#ingredients-container')}>Wyszukaj po produktach</button>
-                                <button disabled>Propozycja na dziś</button>
-                                <button onClick={() => move('/search')}>Wyszukaj z bazy</button>
+                                <Button title="Wyszukaj po produktach" pageUrl="/search#ingredients-container" />
+                                <Button title="Propozycja na dziś" isDisabled={true} />
+                                <Button title="Wyszukaj z bazy" pageUrl="/search" />
                             </div>
                         </div>
                     </div>
@@ -42,72 +60,16 @@ export default function Main() {
                             <section>
                                 <h3>Jak obsługiwać Yummy?</h3>
                                 <p>To nadzwyczaj proste - wybierz jedną z trzech opcji na
-                                    samej górze strony lub kliknij
-                                    <a href="#top">tutaj</a></p>
+                                    samej górze strony lub kliknij&nbsp;
+                                    <a href="#top">tutaj</a>
+                                </p>
                             </section>
                         </div>
                     </div>
                 </div>
 
                 <div id="categories">
-                    <div className="category">
-                        <div>
-                            <div className="cloth flex-center">
-                                <div className="category-container">
-                                    <p>Idealne jedzenie dla tych, którzy chcą się zdrowo
-                                        odżywiać.</p>
-                                    <div className="flex-center">
-                                        <button onClick={() => move(
-                                            `/search?ings%5B%5D=blueberry&amp;
-                                            ings%5B%5D=cherry&amp;
-                                            ings%5B%5D=grapes&amp;
-                                            ings%5B%5D=raspberry&amp;
-                                            ings%5B%5D=strawberry&amp;
-                                            ings%5B%5D=citrus&amp;
-                                            ings%5B%5D=orange&amp;
-                                            ings%5B%5D=whole-apple&amp;
-                                            ings%5B%5D=broccoli&amp;
-                                            ings%5B%5D=carrot&amp;
-                                            ings%5B%5D=cauliflower&amp;
-                                            ings%5B%5D=celery&amp;
-                                            ings%5B%5D=kohlrabi&amp;
-                                            ings%5B%5D=leek&amp;
-                                            ings%5B%5D=pumpkin&amp;
-                                            ings%5B%5D=tomato&amp;
-                                            ings%5B%5D=white-beans&amp;
-                                            ings%5B%5D=zucchini`
-                                        )}>Szukaj</button></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="category">
-                        <div>
-                            <div className="cloth flex-center">
-                                <div className="category-container">
-                                    <p>Coś mniej skromnego, bogatszego w tłuszcz.</p>
-                                    <div className="flex-center"><button onClick={() => move('/search?')}>Szukaj</button></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="category">
-                        <div>
-                            <div className="cloth flex-center">
-                                <div className="category-container">
-                                    <p>Maniacy owoców błyskawicznie rozpoczą serfing tej
-                                        kategorii.</p>
-                                    <div className="flex-center"><button onClick={() => move(
-                                        `/search?ings%5B%5D=blueberry&amp;
-                                        ings%5B%5D=cherry&amp;
-                                        ings%5B%5D=grapes&amp;
-                                        ings%5B%5D=raspberry&amp;
-                                        ings%5B%5D=strawberry`
-                                    )}>Szukaj</button></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {categories.map((category, idx) => <MealCategory key={idx} {...category} />)}
                 </div>
             </main>
             
@@ -118,17 +80,13 @@ export default function Main() {
                     <h3>Marek Kurańda</h3>
                     <h4>Yummy &copy; 2023</h4>
                     <br />
-                    <h5><a target="_blank" rel="noreferrer" href="https://icons8.com/icon/RxvLC54xtSnZ/yummy">Yummy</a>
-                        icon by
+                    <h5>
+                        <a target="_blank" rel="noreferrer" href="https://icons8.com/icon/RxvLC54xtSnZ/yummy">Yummy</a>
+                        &nbsp;icon by&nbsp;
                         <a target="_blank" rel="noreferrer" href="https://icons8.com">Icons8</a>
                     </h5>
                 </div>
             </footer>
         </>
     );
-}
-
-function move(url: string): void {
-    console.info(`Redirect to ${url}`);
-    return;
 }
