@@ -1,0 +1,13 @@
+/*
+    footer.css
+
+    Contains footer part
+*/
+footer {
+    background-color: var(--cooper);
+}
+
+footer > div {
+    padding: 2rem 0;
+    text-align: center;
+}
