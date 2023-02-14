@@ -1,24 +1,22 @@
 @media only screen and (max-width: 1024px) {
-    #root {
+    header:not(.main) {
+        /* Set variables */
         --mh: unset !important;
         --wh: unset !important;
         --hh: unset !important;
 
-        font-size: calc(var(--phi) * 1em);
-    }
-
-    header {
-        font-size: calc(var(--phi) * 1em);
+        /* Set styles */
+        font-size: calc(var(--phi) * 1em);        
         height: auto !important;
         padding: 0.5em 0;
     }
-    header > div {
+    header:not(.main) > div {
         display: block !important;
     }
-    header div.flex-left {
+    header:not(.main) div.flex-left {
         justify-content: center !important;
     }
-    header nav {
+    header:not(.main) nav {
         justify-content: center !important;
         margin: 0.5em 0;
     }

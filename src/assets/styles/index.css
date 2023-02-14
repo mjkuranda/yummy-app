@@ -4,7 +4,7 @@
     Contains header part css
 */
 
-header {
+header.main {
     width: 100%;
     height: 100vh;
 
@@ -13,7 +13,7 @@ header {
     background-size: cover;
 }
 
-header > div > div {
+header.main > div > div {
     height: 100vh;
     /* background-color: var(--blue-de-france-alpha); */
 }

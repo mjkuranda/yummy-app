@@ -1,12 +1,10 @@
 import React from 'react';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 import '../assets/styles/result-media.css';
 import '../assets/styles/result.css';
 import '../assets/styles/mobile/result.css';
-
-// TODO: Fetch image from the database
-import staticImage from '../src/assets/images/berries.jpg';
 
 type Icon = {
     link: string;
@@ -59,6 +57,8 @@ export default function Result() {
     
     return (
         <>
+            <Header />
+            
             <main className="result">
                 <div className="result-nav">
                     <a href="{{sourceUrl}}">

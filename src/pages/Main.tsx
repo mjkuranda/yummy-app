@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MealCategory, { MealCategoryProps } from '../components/MealCategory';
 import Button from '../components/ui/Button';
 import Footer from '../components/Footer';
@@ -8,6 +8,16 @@ import '../assets/styles/index-media.css';
 import '../assets/styles/index.css';
 
 export default function Main() {
+    useEffect(() => {
+        if (location.hash != '#description') {
+            return;
+        }
+        
+        const descriptionElement = document.querySelector('#description');
+        descriptionElement?.scrollIntoView({ behavior: 'smooth' });
+    });
+    
+    // TODO: Fetch some categories or personalized categories from API
     const categories: MealCategoryProps[] = [
         {
             description: 'Idealne jedzenie dla tych, którzy chcą się zdrowo odżywiać.',
@@ -28,7 +38,7 @@ export default function Main() {
     
     return (
         <>
-            <header>
+            <header className="main">
                 <div id="header-cloth" className="center">
                     <div></div>
                 </div>
@@ -46,7 +56,7 @@ export default function Main() {
                 </div>
             </header>
             
-            <main>
+            <main className="main">
                 <div id="description">
                     <div id="description-wrapper" className="center">
                         <div>

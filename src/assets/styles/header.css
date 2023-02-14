@@ -1,27 +1,25 @@
-#root, body {
-    /* Header & section.filter */
-    --mh: 160px;
-    --wh: calc(100vw - (2 * var(--mh)));
-    --hh: 6em;
-}
-
 /*
     header.css
     Contains header part
 */
-header {
+header:not(.main) {
+    /* Header & section.filter */
+    --mh: 160px;
+    --wh: calc(100vw - (2 * var(--mh)));
+    --hh: 6em;
+    
     /* Header left */
-    /* --hl: calc(var(--wh) / var(--phi)); */
+    --hl: calc(var(--wh) / var(--phi));
     /* Header right */
     --hr: calc(var(--wh) - var(--hl));
 
     background-color: var(--cooper);
     height: var(--hh);
 }
-header > div {
+header:not(.main) > div {
     margin: 0 var(--mh);
 }
-header > div > div {
+header:not(.main) > div > div {
     width: var(--hl);
     height: var(--hh);
     background-color: transparent;
@@ -29,28 +27,28 @@ header > div > div {
 #logo {
     margin: 0 1em;
 }
-header > div > nav {
+header:not(.main) > div > nav {
     width: var(--hr);
     height: var(--hh);
     background-color: transparent;
 }
-header > div > nav > a+a {
+header:not(.main) > div > nav > a+a {
     margin-left: 1em;
 }
-header .flex-left {
+header:not(.main) .flex-left {
     flex-wrap: wrap;
 }
 
 
 
 @media all and (max-width: 900px) {
-    header {
+    header:not(.main) {
         height: auto;
     }
-    header > div {
+    header:not(.main) > div {
         display: block !important;
     }
-    header > div > .flex-left {
+    header:not(.main) > div > .flex-left {
         width: auto !important;
     }
 }
