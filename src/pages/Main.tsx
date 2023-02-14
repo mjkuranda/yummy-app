@@ -11,9 +11,11 @@ export default function Main() {
     const categories: MealCategoryProps[] = [
         {
             description: 'Idealne jedzenie dla tych, którzy chcą się zdrowo odżywiać.',
-            ingredients: [ 'blueberry', 'cherry', 'grapes', 'raspberry', 'strawberry', 'citrus', 
-            'orange', 'whole-apple', 'broccoli', 'carrot', 'cauliflower', 'celery', 'kohlrabi',
-            'leek', 'pumpkin', 'tomato', 'white-beans', 'zucchini' ]
+            ingredients: [
+                'blueberry', 'cherry', 'grapes', 'raspberry', 'strawberry', 'citrus', 
+                'orange', 'whole-apple', 'broccoli', 'carrot', 'cauliflower', 'celery', 'kohlrabi',
+                'leek', 'pumpkin', 'tomato', 'white-beans', 'zucchini'
+            ]
         },
         {
             description: 'Coś mniej skromnego, bogatszego w tłuszcz.'

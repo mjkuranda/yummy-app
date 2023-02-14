@@ -17,4 +17,8 @@
     .result-container {
         display: block;
     }
+    
+    footer {
+        font-size: calc(var(--phi) * 1em);
+    }
 }
