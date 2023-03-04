@@ -17,4 +17,8 @@ export default class Icon {
     public getSourcePath(): string {
         return 'icons' + this.url + '/' + this.getFileName();
     }
+    
+    public getLink(): string {
+        return this.link;
+    }
 }

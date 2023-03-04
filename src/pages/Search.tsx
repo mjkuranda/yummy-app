@@ -1,13 +1,23 @@
 import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 
-import '../assets/styles/search-media.css';
+import '../assets/styles/mobile/search.css';
 import '../assets/styles/search.css';
 import Ingredient from '../classes/Ingredient';
+import { Type } from '../classes/Meal';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { categorizedIngredients, ICategorizedIngredients } from '../constants/data';
 
 export default function Search() {
+    const [searchParams] = useSearchParams();
+    const ings = searchParams.getAll('ings');
+    const mealTypes = Object.entries(Type).map(([k, v]) => { return { k, v } });
+    
+    // TODO: styles/components, styles/pages, styles/pages/mobile
+    
+    // TODO: More components
+    
     // TODO: Create components
     const renderIngredient = (ingredient: Ingredient): React.ReactNode => {
         return (
@@ -18,16 +28,35 @@ export default function Search() {
                     name="ings[]"
                     data-id={ingredient.getIcon().getName()}
                     value={ingredient.getIcon().getName()}
-                    {{ tryToCheck ing.icon.name}}
+                    checked={ings.includes(ingredient.getIcon().getName())}
                 />
-                <label htmlFor="{{ing.icon.name}}" className="flex-center">
+                <label htmlFor={ingredient.getIcon().getName()} className="flex-center">
                     <img
                         className="icon"
-                        src="{{ing.icon.src}}"
-                        alt="'{{ing.icon.name}}' ingredient image"
-                        author="{{ing.icon.link}}"
+                        src={ingredient.getIcon().getSourcePath()}
+                        alt={`'${ingredient.getIcon().getName()}' ingredient icon`}
+                        data-author={ingredient.getIcon().getLink()}
                     ></img>
                     <p>{ingredient.getName()}</p>
+                </label>
+            </li>
+        );
+    };
+    
+    const renderMealType = (mealType: Record<string, string>): React.ReactNode => {
+        return (
+            <li>
+                <input
+                    type="checkbox"
+                    id={mealType.k}
+                    name="types[]"
+                    data-type-k={mealType.k}
+                    data-type-v={mealType.v}
+                    value={mealType.k}
+                    checked={Object.keys(mealTypes).includes(mealType.k)}
+                />
+                <label htmlFor={mealType.k}>
+                    <p>{mealType.v}</p>
                 </label>
             </li>
         );
@@ -58,21 +87,17 @@ export default function Search() {
                     <div>
                         <h2>Typy</h2>
                         <div className="meal-types-container">
-                            <ul>
-                                {{#each mealTypes as |type|}}
-                                <li><input type="checkbox" id="{{type.k}}" name="types[]" data-type-k="{{type.k}}" data-type-v="{{type.v}}" value="{{type.k}}" {{ tryToCheckType type.k }} /><label for="{{type.k}}"><p>{{type.v}}</p></label></li>
-                                {{/each}}
-                            </ul>
+                            <ul>{mealTypes.map(type => renderMealType(type))}</ul>
                         </div>
                     </div>
-                    <div class="flex-center">
+                    {/* <div class="flex-center">
                         <button type="submit" onClick="setHash('results')">Wyszukaj</button>
-                    </div>
+                    </div> */}
                     <input id="page" name="page" value="{{page}}" hidden />
                 </form>
             </section>
 
-            <main id="results">
+            {/* <main id="results">
                 <section class="result-box">
                     {{#each meals as |meal| }}
                     <div class="result-container flex-center">
@@ -113,7 +138,7 @@ export default function Search() {
                     <div class="flex-center"><p>Brakuje szukanego posiłku? Dodaj go!</p></div>
                     <div class="flex-center"><button onClick="move('/meals/add')">Dodaj</button></div>
                 </section>
-            </main>
+            </main> */}
             <Footer />
         </>
     );

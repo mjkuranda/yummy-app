@@ -3,8 +3,8 @@ export function buildQuery(ingredients: string[] | undefined): string {
         return '';   
     }
     
-    const encoded = encodeURIComponent('ings[]');
-    const query = `?${encoded}${ingredients.join(`&${encoded}`)}`;
+    const variable = 'ings=';
+    const query = `?${variable}${ingredients.join(`&${variable}`)}`;
     
     return query;
 }
