@@ -11,7 +11,7 @@ export type MealTypeContainerProps = {
 
 export default function MealTypeContainer({ mealTypes, types }: MealTypeContainerProps) {
     return (
-        <div>
+        <div id="types-container">
             <h2>Typy</h2>
             <div className="meal-types-container">
                 <ul>

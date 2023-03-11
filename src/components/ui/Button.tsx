@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export type ButtonType = 'button' | 'submit' | 'reset';
+export enum ButtonType {
+    BUTTON = 'button',
+    SUBMIT = 'submit',
+    RESET = 'reset'
+}
 
 export type ButtonProps = {
     title: string;
@@ -12,7 +16,7 @@ export type ButtonProps = {
 };
 
 export default function Button({ classes, isDisabled, pageUrl, title, type }: ButtonProps) {
-    const classNames = `yummy-button${classes && ' '}${classes?.join(' ') ?? ''}`;
+    const classNames = ['yummy-button', ...(classes ?? [])].join(' ');
     
     if (pageUrl) {
         return (
@@ -28,7 +32,7 @@ export default function Button({ classes, isDisabled, pageUrl, title, type }: Bu
     
     return (
         <div className={classNames}>
-            <button disabled={isDisabled}>
+            <button type={type} disabled={isDisabled}>
                 {title}
             </button>
         </div>

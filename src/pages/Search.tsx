@@ -9,30 +9,39 @@ import MealTypeContainer, { MealType, MealTypeContainerProps } from '../componen
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Button, { ButtonType } from '../components/ui/Button';
+import { buildQuery } from '../utils/ButtonUtils';
 
 export default function Search() {
-    const [searchParams] = useSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams();
     const ings = searchParams.getAll('ings');
     const types = searchParams.getAll('types');
     const mealTypes: MealType[] = Object.entries(Type).map(([k, v]) => { return { k, v } });
-    
-    // TODO: styles/components, styles/pages, styles/pages/mobile
-    
+
     const ingredientCategoryContainerProps: IngredientCategoryContainerProps = { ings };
     const mealTypeContainerProps: MealTypeContainerProps = { mealTypes, types };
-    
     const buttonSearchProps = {
         classes: ['flex-center'],
-        pageUrl: '/search',
         title: 'Wyszukaj',
-        type: 'submit' as ButtonType
+        type: ButtonType.SUBMIT
+    };
+    
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        
+        const form = e.target as HTMLFormElement;
+        const ingsInputs = form.querySelectorAll('#ingredients-container input') as NodeListOf<HTMLInputElement>;
+        const typesInputs = form.querySelectorAll('#types-container input') as NodeListOf<HTMLInputElement>;
+        const ingredients = Array.from(ingsInputs).filter(i => i.checked).map(i => i.value);
+        const types = Array.from(typesInputs).filter(i => i.checked).map(i => i.value)
+        
+        setSearchParams(buildQuery({ ingredients, types }));
     };
     
     return (
         <>
             <Header />
             <section id="filters">
-                <form action="" method="get">
+                <form action="" method="get" onSubmit={handleSubmit}>
                     <IngredientCategoryContainer {...ingredientCategoryContainerProps} />
                     <MealTypeContainer {...mealTypeContainerProps} />
                     <Button {...buttonSearchProps} />
