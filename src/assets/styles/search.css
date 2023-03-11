@@ -12,13 +12,17 @@
     display: block;
 }
 
-.ingredient-component span * {
+.ingredient-component span *,
+.meal-type-component span * {
     cursor: pointer !important;
+    user-select: none;
 }
-.ingredient-component span+span {
+.ingredient-component span+span,
+.meal-type-component span+span {
     margin-left: 1.618em;
 }
-.ingredient-component label p {
+.ingredient-component label p,
+.meal-type-component label p {
     text-transform: capitalize;
 }
 .ingredient-component label img+p {

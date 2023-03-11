@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.4.0] - 2023-02-17
 ### Added
 - [Marek Kurańda](https://github.com/mjkuranda): Added basic `search` subpage containing some filters.
+- [Marek Kurańda](https://github.com/mjkuranda): Added `Ingredient Component`.
 
 ## [0.3.0] - 2023-02-14
 ### Added

@@ -4,74 +4,28 @@ import { useSearchParams } from 'react-router-dom';
 import '../assets/styles/mobile/search.css';
 import '../assets/styles/search.css';
 import { Type } from '../classes/Meal';
+import IngredientCategoryContainer, { IngredientCategoryContainerProps } from '../components/containers/IngredientCategoryContainer';
+import MealTypeContainer, { MealType, MealTypeContainerProps } from '../components/containers/MealTypeContainer';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import { IngredientComponent } from '../components/IngredientComponent';
-import { categorizedIngredients, ICategorizedIngredients } from '../constants/data';
 
 export default function Search() {
     const [searchParams] = useSearchParams();
     const ings = searchParams.getAll('ings');
-    const mealTypes = Object.entries(Type).map(([k, v]) => { return { k, v } });
+    const mealTypes: MealType[] = Object.entries(Type).map(([k, v]) => { return { k, v } });
     
     // TODO: styles/components, styles/pages, styles/pages/mobile
     
-    // TODO: More components
-    
-    // TODO: Create components
-    const renderMealType = (mealType: Record<string, string>): React.ReactNode => {
-        return (
-            <li>
-                <input
-                    type="checkbox"
-                    id={mealType.k}
-                    name="types[]"
-                    data-type-k={mealType.k}
-                    data-type-v={mealType.v}
-                    value={mealType.k}
-                    checked={Object.keys(mealTypes).includes(mealType.k)}
-                />
-                <label htmlFor={mealType.k}>
-                    <p>{mealType.v}</p>
-                </label>
-            </li>
-        );
-    };
-    
-    const renderCategory = (categorized: ICategorizedIngredients): React.ReactNode => {
-        return (
-            <div className="category">
-                <h3>{categorized.category}</h3>
-                <ul>
-                    {categorized.ingredients.map(
-                        (ingredient, idx) => <IngredientComponent 
-                            key={idx}
-                            ingredient={ingredient}
-                            isChecked={ings.includes(ingredient.getIcon().getName())}
-                        />
-                    )}
-                </ul>
-            </div>
-        );
-    };
+    const ingredientCategoryContainerProps: IngredientCategoryContainerProps = { ings };
+    const mealTypeContainerProps: MealTypeContainerProps = { mealTypes };
     
     return (
         <>
             <Header />
             <section id="filters">
                 <form action="" method="get">
-                    <div id="ingredients-container">
-                        <h2>Składniki</h2>
-                        <div className="category-container">
-                            {categorizedIngredients.map(categorized => renderCategory(categorized))}
-                        </div>
-                    </div>
-                    <div>
-                        <h2>Typy</h2>
-                        <div className="meal-types-container">
-                            <ul>{mealTypes.map(type => renderMealType(type))}</ul>
-                        </div>
-                    </div>
+                    <IngredientCategoryContainer {...ingredientCategoryContainerProps} />
+                    <MealTypeContainer {...mealTypeContainerProps} />
                     {/* <div class="flex-center">
                         <button type="submit" onClick="setHash('results')">Wyszukaj</button>
                     </div> */}

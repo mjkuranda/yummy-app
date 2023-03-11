@@ -7,7 +7,7 @@ interface IngredientProps {
     key?: number;
 }
 
-export function IngredientComponent({ ingredient, isChecked }: IngredientProps) {
+export default function IngredientComponent({ ingredient, isChecked }: IngredientProps) {
     const [checked, setChecked] = useState(isChecked);
     const handleCheck = (): void => { setChecked(!checked) };
     
