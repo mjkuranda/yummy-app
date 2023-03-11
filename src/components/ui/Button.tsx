@@ -1,18 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+export type ButtonType = 'button' | 'submit' | 'reset';
+
 export type ButtonProps = {
+    title: string;
+    classes?: string[];
     isDisabled?: boolean;
     pageUrl?: string;
-    title: string;
+    type?: ButtonType;
 };
 
-export default function Button({ isDisabled, pageUrl, title }: ButtonProps) {
+export default function Button({ classes, isDisabled, pageUrl, title, type }: ButtonProps) {
+    const classNames = `yummy-button${classes && ' '}${classes?.join(' ') ?? ''}`;
+    
     if (pageUrl) {
         return (
-            <div className="yummy-button">
+            <div className={classNames}>
                 <Link to={pageUrl}>
-                    <button disabled={isDisabled}>
+                    <button type={type} disabled={isDisabled}>
                         {title}
                     </button>
                 </Link>
@@ -21,7 +27,7 @@ export default function Button({ isDisabled, pageUrl, title }: ButtonProps) {
     }
     
     return (
-        <div className="yummy-button">
+        <div className={classNames}>
             <button disabled={isDisabled}>
                 {title}
             </button>

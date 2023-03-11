@@ -8,6 +8,7 @@ import IngredientCategoryContainer, { IngredientCategoryContainerProps } from '.
 import MealTypeContainer, { MealType, MealTypeContainerProps } from '../components/containers/MealTypeContainer';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import Button, { ButtonType } from '../components/ui/Button';
 
 export default function Search() {
     const [searchParams] = useSearchParams();
@@ -20,6 +21,13 @@ export default function Search() {
     const ingredientCategoryContainerProps: IngredientCategoryContainerProps = { ings };
     const mealTypeContainerProps: MealTypeContainerProps = { mealTypes, types };
     
+    const buttonSearchProps = {
+        classes: ['flex-center'],
+        pageUrl: '/search',
+        title: 'Wyszukaj',
+        type: 'submit' as ButtonType
+    };
+    
     return (
         <>
             <Header />
@@ -27,10 +35,7 @@ export default function Search() {
                 <form action="" method="get">
                     <IngredientCategoryContainer {...ingredientCategoryContainerProps} />
                     <MealTypeContainer {...mealTypeContainerProps} />
-                    {/* <div class="flex-center">
-                        <button type="submit" onClick="setHash('results')">Wyszukaj</button>
-                    </div> */}
-                    <input id="page" name="page" value="{{page}}" hidden />
+                    <Button {...buttonSearchProps} />
                 </form>
             </section>
 
