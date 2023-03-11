@@ -1,9 +1,10 @@
 import React from 'react';
 import { categorizedIngredients } from '../../constants/data';
+import { QueryParamArray } from '../../utils/ButtonUtils';
 import IngredientCategoryComponent from '../IngredientCategoryComponent';
 
 export type IngredientCategoryContainerProps = {
-    ings: string[]
+    ings: QueryParamArray
 }
 
 export default function IngredientCategoryContainer({ ings }: IngredientCategoryContainerProps) {

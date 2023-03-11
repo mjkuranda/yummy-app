@@ -1,13 +1,15 @@
 import React from 'react';
+import { QueryParamArray } from '../../utils/ButtonUtils';
 import MealTypeComponent from '../MealTypeComponent';
 
 export type MealType = Record<string, string>;
 
 export type MealTypeContainerProps = {
-    mealTypes: MealType[]
+    mealTypes: MealType[],
+    types: QueryParamArray
 };
 
-export default function MealTypeContainer({ mealTypes }: MealTypeContainerProps) {
+export default function MealTypeContainer({ mealTypes, types }: MealTypeContainerProps) {
     return (
         <div>
             <h2>Typy</h2>
@@ -17,7 +19,7 @@ export default function MealTypeContainer({ mealTypes }: MealTypeContainerProps)
                         <MealTypeComponent
                             key={idx}
                             mealType={type}
-                            isChecked={Object.keys(mealTypes).includes(type.k)}
+                            isChecked={types.includes(type.k)}
                         />
                     )}
                 </ul>

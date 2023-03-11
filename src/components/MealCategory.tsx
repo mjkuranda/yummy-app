@@ -9,7 +9,7 @@ export type MealCategoryProps = {
 };
 
 export default function MealCategory({ description, ingredients, key }: MealCategoryProps) {
-    const pageUrl = buildPathWithQuery('search', buildQuery(ingredients));
+    const pageUrl = buildPathWithQuery('search', buildQuery({ ingredients }));
     
     return (
         <div className="category" key={key}>

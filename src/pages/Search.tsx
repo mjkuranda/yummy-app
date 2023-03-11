@@ -12,12 +12,13 @@ import Header from '../components/Header';
 export default function Search() {
     const [searchParams] = useSearchParams();
     const ings = searchParams.getAll('ings');
+    const types = searchParams.getAll('types');
     const mealTypes: MealType[] = Object.entries(Type).map(([k, v]) => { return { k, v } });
     
     // TODO: styles/components, styles/pages, styles/pages/mobile
     
     const ingredientCategoryContainerProps: IngredientCategoryContainerProps = { ings };
-    const mealTypeContainerProps: MealTypeContainerProps = { mealTypes };
+    const mealTypeContainerProps: MealTypeContainerProps = { mealTypes, types };
     
     return (
         <>
