@@ -109,6 +109,10 @@ textarea:not(:placeholder-shown):invalid {
     margin: 0 auto;
 }
 
+.flex {
+    display: flex;
+}
+
 .flex-center {
     display: flex;
     justify-content: center;

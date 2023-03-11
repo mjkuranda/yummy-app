@@ -5,7 +5,22 @@
 #filters div {
     padding: 8px;
 }
-
-#filters div .category ul {
+#filters div .category > h3 {
+    text-transform: capitalize;
+}
+#filters div .category > ul {
     display: block;
+}
+
+.ingredient-component span * {
+    cursor: pointer !important;
+}
+.ingredient-component span+span {
+    margin-left: 1.618em;
+}
+.ingredient-component label p {
+    text-transform: capitalize;
+}
+.ingredient-component label img+p {
+    margin-left: 1em;
 }

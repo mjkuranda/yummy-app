@@ -3,10 +3,10 @@ import { useSearchParams } from 'react-router-dom';
 
 import '../assets/styles/mobile/search.css';
 import '../assets/styles/search.css';
-import Ingredient from '../classes/Ingredient';
 import { Type } from '../classes/Meal';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import { IngredientComponent } from '../components/IngredientComponent';
 import { categorizedIngredients, ICategorizedIngredients } from '../constants/data';
 
 export default function Search() {
@@ -19,30 +19,6 @@ export default function Search() {
     // TODO: More components
     
     // TODO: Create components
-    const renderIngredient = (ingredient: Ingredient): React.ReactNode => {
-        return (
-            <li>
-                <input
-                    type="checkbox"
-                    id={ingredient.getIcon().getName()}
-                    name="ings[]"
-                    data-id={ingredient.getIcon().getName()}
-                    value={ingredient.getIcon().getName()}
-                    checked={ings.includes(ingredient.getIcon().getName())}
-                />
-                <label htmlFor={ingredient.getIcon().getName()} className="flex-center">
-                    <img
-                        className="icon"
-                        src={ingredient.getIcon().getSourcePath()}
-                        alt={`'${ingredient.getIcon().getName()}' ingredient icon`}
-                        data-author={ingredient.getIcon().getLink()}
-                    ></img>
-                    <p>{ingredient.getName()}</p>
-                </label>
-            </li>
-        );
-    };
-    
     const renderMealType = (mealType: Record<string, string>): React.ReactNode => {
         return (
             <li>
@@ -67,7 +43,13 @@ export default function Search() {
             <div className="category">
                 <h3>{categorized.category}</h3>
                 <ul>
-                    {categorized.ingredients.map(ingredient => renderIngredient(ingredient))}
+                    {categorized.ingredients.map(
+                        (ingredient, idx) => <IngredientComponent 
+                            key={idx}
+                            ingredient={ingredient}
+                            isChecked={ings.includes(ingredient.getIcon().getName())}
+                        />
+                    )}
                 </ul>
             </div>
         );
