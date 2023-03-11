@@ -1,8 +1,7 @@
-import React from 'react';
-import { useSearchParams } from 'react-router-dom';
-
 import '../assets/styles/mobile/search.css';
 import '../assets/styles/search.css';
+import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Type } from '../classes/Meal';
 import IngredientCategoryContainer, { IngredientCategoryContainerProps } from '../components/containers/IngredientCategoryContainer';
 import MealTypeContainer, { MealType, MealTypeContainerProps } from '../components/containers/MealTypeContainer';
