@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './ui/Button';
+import { Link } from 'react-router-dom';
 
 export type MealResultProps = {
     description: string,
@@ -14,12 +15,12 @@ export default function MealResult({ description, id, image, title }: MealResult
     return (
         <div className="result-container flex-center">
             <div className="result-image">
-                <a className="img-link" href="/result/{{meal._id}}?{{sourceUrl}}" target="_blank">
+                <Link to={pageUrl} target="_blank" rel="noopener noreferrer">
                     {image
-                        ? <img src="uploads/{{meal.image}}" alt="Zdjęcie posiłku o nazwie {{meal.title}}" />
-                        : <img src="icons/no-image.png" alt="Brak zdjęcia posiłku o nazwie {{meal.title}}" />                   
+                        ? <img src="uploads/{{meal.image}}" alt={`Zdjęcie posiłku o nazwie ${title}`} />
+                        : <img src="icons/no-image.png" alt={`Brak zdjęcia posiłku o nazwie ${title}`} />                   
                     }
-                </a>
+                </Link>
             </div>
             <div className="result-label">
                 <div className="result-description">

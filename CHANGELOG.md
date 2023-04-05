@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - [Marek Kurańda](https://github.com/mjkuranda): Added meal results and submit button.
 - [Marek Kurańda](https://github.com/mjkuranda): Added simple proceeding filter data.
+- [Marek Kurańda](https://github.com/mjkuranda): Added the other part of Search subpage.
 
 ## [0.4.0] - 2023-02-17
 ### Added
